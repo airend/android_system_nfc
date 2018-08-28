@@ -18,6 +18,8 @@ include $(CLEAR_VARS)
 LOCAL_MODULE := nfc_nci.bcm2079x.default
 LOCAL_PROPRIETARY_MODULE := true
 LOCAL_MODULE_RELATIVE_PATH := hw
+LOCAL_POST_INSTALL_CMD := $(hide) ln -s $(LOCAL_MODULE).so \
+    $(TARGET_OUT_VENDOR_SHARED_LIBRARIES)/$(LOCAL_MODULE_RELATIVE_PATH)/nfc_nci.$(TARGET_DEVICE).so
 LOCAL_SRC_FILES := $(call all-c-files-under, $(HALIMPL)) \
     $(call all-cpp-files-under, $(HALIMPL)) \
     src/adaptation/CrcChecksum.cpp \
